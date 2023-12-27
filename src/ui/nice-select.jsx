@@ -42,7 +42,7 @@ const NiceSelect = ({
       >
         {options?.map((item) => (
           <li
-            key={item.value}
+            key={item.id}
             data-value={item.value}
             className={`option ${
               item.value === current?.value && "selected focus"

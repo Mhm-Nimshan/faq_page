@@ -116,7 +116,7 @@
                 }
                 &.active{
                     transform: scaleX(1.05);
-                    & a{
+                    & div{
                         color: var(--tp-common-blue-3);
                         & span{
                             &::before{
@@ -128,7 +128,7 @@
                         }
                     }
                 }
-                & a{
+                & div{
                     font-weight: 500;
                     font-size: 15px;
                     color: #202124;
