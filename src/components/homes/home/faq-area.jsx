@@ -29,9 +29,19 @@ const faq_content = {
 
 }
 const {sub_title, title, categorys, btn_text, title_notice }  = faq_content
-const selectHandler = (e) => {};
+
 
 const FaqArea = ({style_service}) => {
+   const [category, setCategory] = useState(1);
+
+   const selectCategory = (categoryId) => {
+      setCategory(categoryId);
+   }
+
+   const selectHandler = (category) => {
+      setCategory(category.id)
+   };
+
     return (
         <>
             <div className="tp-faq-area pt-130 pb-60 fix">
@@ -48,75 +58,24 @@ const FaqArea = ({style_service}) => {
                               </div>
                               </h3>
                               <div className="">
-                                 <div className="faqselect__select">
-                                 <NiceSelect
-                                    options={[
-                                       { value: "Your Inquiry about", text: "Your Inquiry about" },
-                                       { value: "Amez Cloud", text: "Amez Cloud" },
-                                       { value: "Amez Wallet", text: "Amez Wallet" },
-                                       { value: "Amez Cards", text: "Amez Cards" },
-                                       { value: "Amez Hub", text: "Amez Hub" },
-                                       { value: "AmezCare Plus", text: "AmezCare Plus" },
-                                       { value: "Amez Freelance", text: "Amez Freelance" },
-                                       { value: "Amez Host Hub", text: "Amez Host Hub" },
-                                       { value: "Amez Express", text: "Amez Express" },
-                                       { value: "Amez Organic", text: "Amez Organic" },
-                                       { value: "Amez Sellers", text: "Amez Sellers" },
-                                       { value: "Amez Beta", text: "Amez Beta" },
-                                    ]}
-                                    defaultCurrent={0}
+                           <div className="faqselect__select">
+                              <NiceSelect
+                                 options={[
+                                    { value: "Your Inquiry about", text: "Your Inquiry about", id: 0 },
+                                    ...categorys.map((item) => ({
+                                       value: item.category,
+                                       text: item.category,
+                                       id: item.id,
+                                    })),
+                                 ]}
+                                 defaultCurrent={0}
                                     onChange={selectHandler}
                                  />
                                  </div>
                               </div>
                            </div>
-                        <AnswerQuestion /> 
-                        <div className="row pt-10">
-                           <div className="support-pagination col-xl-6 col-lg-6">
-                              <nav>
-                                 <ul>
-                                    <li>
-                                       <Link href="#">
-                                          <i className="far fa-angle-left"></i>
-                                       </Link>
-                                    </li>
-                                    <li>
-                                       <Link className="current" href="#">1</Link>
-                                    </li>
-                                    <li>
-                                       <Link href="#">2</Link>
-                                    </li>
-                                    <li>
-                                       <Link href="#">3</Link>
-                                    </li>
-                                    <li>
-                                       <Link href="#">4</Link>
-                                    </li>
-                                    <li>
-                                       <Link href="#">5</Link>
-                                    </li>
-                                    <li>
-                                       <Link href="#">6</Link>
-                                    </li>
-                                    <li>
-                                       <span>...</span>
-                                    </li>
-                                    <li>
-                                       <Link href="#">25</Link>
-                                    </li>
-                                    <li>
-                                       <Link href="#">
-                                          <i className="far fa-angle-right"></i>
-                                       </Link>
-                                    </li>
-                                 </ul>
-                                 </nav>
-                                 
-                           </div>
-                           <div className="pt-20 pb-20 col-xl-6 col-lg-6">
-                              <>&nbsp;Viewing 11–20 of 133 results</>
-                           </div>
-                        </div>
+                        <AnswerQuestion categoryId={category}/> 
+                        
                      </div>
                      <div className={`col-xl-3 col-lg-3 support-box ${style_service && "wow tpfadeLeft"}`} 
                         data-wow-duration={style_service && ".9s"} 
@@ -125,8 +84,8 @@ const FaqArea = ({style_service}) => {
                               <div className="support-details-category-list">
                                  <ul>
                                  {categorys.map((item, i)  => 
-                                       <li key={i} className={item.cls}>                                        
-                                          <Link href="#">
+                                       <li key={i} className={category == item.id ? 'active' : ''}>                                        
+                                          <div onClick={() => selectCategory(item.id)}>
                                           <span>{item.category}&nbsp;
                                              {/*<div className="tp-support-feature-tooltip-box p-relative">
                                                    <NoticeTwo />
@@ -136,7 +95,7 @@ const FaqArea = ({style_service}) => {
                                              </div>
                                              </div>*/}
                                              </span><i className="fal fa-angle-right"></i>
-                                          </Link>
+                                          </div>
                                        </li>
                                        
                                  )} 

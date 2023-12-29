@@ -1,5 +1,6 @@
-import { useState, useCallback, useRef } from "react";
-import { useClickAway } from "react-use";
+import React, { useState, useCallback, useRef } from 'react';
+import { useClickAway } from 'react-use';
+import styles from './NiceSelect.module.css'; // Import the CSS module
 
 const NiceSelect = ({
   options,
@@ -27,6 +28,7 @@ const NiceSelect = ({
   return (
     <div
       className={`nice-select ${(className, open && "open")}`}
+     // className={`nice-select ${className} ${open && styles.open}`}
       role="button"
       tabIndex={0}
       onClick={() => setOpen((prev) => !prev)}
@@ -42,7 +44,7 @@ const NiceSelect = ({
       >
         {options?.map((item) => (
           <li
-            key={item.value}
+            key={item.id}
             data-value={item.value}
             className={`option ${
               item.value === current?.value && "selected focus"

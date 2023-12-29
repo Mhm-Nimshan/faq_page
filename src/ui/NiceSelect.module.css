@@ -1,0 +1,15 @@
+/* NiceSelect.module.css */
+
+/* Default styles for larger screens */
+
+@media screen and (max-width: 767px) {
+  /* Media query for screens with a maximum width of 767 pixels (typical mobile devices) */
+
+  .nice-select {
+    /* Add your mobile-specific styles here */
+  }
+
+  .open {
+    /* Add styles for when the dropdown is open on mobile */
+  }
+}
