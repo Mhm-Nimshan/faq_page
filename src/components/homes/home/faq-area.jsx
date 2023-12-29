@@ -58,14 +58,17 @@ const FaqArea = ({style_service}) => {
                               </div>
                               </h3>
                               <div className="">
-                                 <div className="faqselect__select">
-                                 <NiceSelect
-                                    options={categorys.map(item => ({
+                           <div className="faqselect__select">
+                              <NiceSelect
+                                 options={[
+                                    { value: "Your Inquiry about", text: "Your Inquiry about", id: 0 },
+                                    ...categorys.map((item) => ({
                                        value: item.category,
                                        text: item.category,
-                                       id: item.id
-                                     }))}
-                                    defaultCurrent={0}
+                                       id: item.id,
+                                    })),
+                                 ]}
+                                 defaultCurrent={0}
                                     onChange={selectHandler}
                                  />
                                  </div>
