@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React,{useState} from 'react';
 import img from "../../../../public/assets/img/faq/faq-1.png" 
+import Chatbot from './chatbot/Chatbot';
 
 const faq_content = {
     sub_title: "Amez Cloud",
@@ -115,6 +116,7 @@ const FaqArea = ({style_service}) => {
                         </div>
                      </div>
                   </div>
+                  <Chatbot />
                </div>
             </div>
         </>

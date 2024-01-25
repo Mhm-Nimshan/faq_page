@@ -459,3 +459,123 @@
     }
 }
 
+.chat-logo {
+    width: 6rem; 
+    height: 6rem; 
+    border-radius: 100%; 
+    object-fit: cover;   
+
+    position: fixed; // or 'absolute' if you want it relative to a positioned parent
+    bottom: 40px; // Distance from the bottom of the viewport
+    right: 20px;
+     // Distance from the right of the viewport
+    z-index: 1000; // High z-index to ensure it's above other elements
+}
+
+.chatbot-logo {
+    position: fixed; // or 'absolute' if you want it relative to a positioned parent
+    bottom: 20px; // Distance from the bottom of the viewport
+    right: 20px; // Distance from the right of the viewport
+    z-index: 1000; // High z-index to ensure it's above other elements
+
+  }
+
+  .chat-box {
+    bottom:150px;
+    position: fixed; // or 'absolute' if you want it relative to a positioned parent
+    width: 25rem;
+    height: 30rem;
+    right: 20px;
+     // Distance from the right of the viewport
+    z-index: 1000; // High z-index to ensure it's above other elements
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .company-logo {
+    width: 6rem; 
+  }
+  .person-logo {
+    width: 3rem; 
+    height: 3rem; 
+    border-radius: 100%; 
+    object-fit: cover; 
+  }
+
+  .send-button {
+    width: 12px;
+    margin-left: 340px;
+    padding-top: 10px;
+  }
+
+  .message-input {
+    border: 1px solid #D1D5DB; // border border-gray-300 (This is the hex code for the gray-300 color in Tailwind)
+    border-radius: 0.25rem; // rounded (This is equivalent to 4px by default in Tailwind)
+    position: fixed; // Fix the position relative to the viewport
+    bottom: 160px;
+    // Add any additional styles such as padding, margin, etc. as needed
+    padding: 0.5rem; // Example padding, adjust as needed
+    margin-right: 10px;
+    width: 20%;
+  }
+
+  .chat-input-container {
+    position: fixed; // Fix the position relative to the viewport
+    bottom: 160px; // Align to the bottom of the viewport
+    right: 30px; // Align to the left of the viewport
+    width: 24rem; // Take full width of the viewport
+    padding: 1rem; // p-2 equivalent, where 2 typically equals to 0.5rem in Tailwind CSS
+    border-top: 1px solid #D1D5DB; // border-t equivalent
+    background: #fff; // Assuming you want a white background
+    z-index: 1000; // Ensure it's above most other elements
+  }
+
+  .message-container {
+    text-align: left;
+    max-width: 20rem; // max-w-xs equivalent, where xs typically equals to 20rem in Tailwind CSS
+    margin-left: 1rem; // mx-4 equivalent, where 4 typically equals to 1rem in Tailwind CSS
+    padding: 0.5rem; // p-2 equivalent, where 2 typically equals to 0.5rem in Tailwind CSS
+    border-radius: 0.25rem; // rounded equivalent, which is typically 4px or 0.25rem in Tailwind CSS
+    border: 1px solid #D1D5DB; 
+    margin-bottom: 10px;
+  }
+
+  .department-button {
+    display: flex;
+    flex-direction: column;
+    width: 8rem;
+    margin-left: 1rem;
+  }
+
+  .dept-btn-green{
+	display: inline-block;
+	color: var(--tp-common-white);
+	font-family: var(--tp-ff-mont);
+	height: 52px;
+	line-height: 52px;
+	padding: 0 30px;
+	font-weight: 600;
+    margin-bottom: 10px;
+	font-size: 14px;
+	text-align: center;
+	letter-spacing: -0.02em;
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	z-index: 1;
+	transition: .5s;
+	background: linear-gradient(140deg, #8800ff -23%, #e858ff 100%);
+	box-shadow: 0px 2px 3px rgba(3, 22, 3, 0.2);
+	border-radius: 10px;
+	&:hover{
+		box-shadow: 0px 8px 24px 0px rgba(25, 118, 41, 0.3);
+		transform: translateY(-2px);
+		color: var(--tp-common-white);	
+	}
+}
+  
+.user-msg {
+    background-color: #3b82f6; /* This is an approximate color for 'blue-500' in Tailwind CSS */
+    color: white;
+    width: 15rem;
+}
