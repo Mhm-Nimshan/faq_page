@@ -1,6 +1,5 @@
-const Message = ({ text, sender }) => {
-    const isUser = sender === 'user';
-    const messageClass = isUser ? 'user-msg' : 'bg-gray-300';
+const Message = ({ text, from_customer }) => {
+    const messageClass = from_customer ? 'user-msg' : 'bg-gray-300';
 
     return (
         <div className={`message-container ${messageClass}`}>

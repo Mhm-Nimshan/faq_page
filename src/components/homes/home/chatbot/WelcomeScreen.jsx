@@ -1,14 +1,13 @@
-const WelcomeScreen = ({selectDept}) => {
+import UserInfo from "./UserInfo";
+
+const WelcomeScreen = ({setChat}) => {
   const messages = [
     {
       id: 1,
       text: "Hi! Welcome to Amez Cloud Virtual Assistant..",
       sender: "bot",
-    },
-    { id: 2, text: "Please Select the Department to Connect", sender: "bot" },
+    }
   ];
-
-  const buttons = ["Sales", "Technical", "Integration"];
 
   return (
     <>
@@ -17,14 +16,7 @@ const WelcomeScreen = ({selectDept}) => {
           <div>{msg.text}</div>
         </div>
       ))}
-      <div className="department-button">
-        {buttons.map((btn) => (
-          <button className="dept-btn-green" onClick={() => {
-					  selectDept(btn)
-		
-		}}>{btn}</button>
-        ))}
-      </div>
+      <UserInfo setChat={setChat}/>
     </>
   );
 };

@@ -579,3 +579,45 @@
     color: white;
     width: 15rem;
 }
+
+.form-container {
+    max-width: 300px;
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid #e5e7eb; /* This is Tailwind's gray-300 */
+    border-radius: 0.375rem; /* This is Tailwind's rounded-md */
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.2rem; /* This is Tailwind's mb-2 */
+    color: #374151; /* This is Tailwind's gray-700 */
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem 0.5rem; /* This is Tailwind's p-3 */
+    border: 1px solid #e5e7eb; /* This is Tailwind's border-gray-300 */
+    border-radius: 0.375rem; /* This is Tailwind's rounded-md */
+    margin-bottom: 1rem; /* This is Tailwind's mb-4 */
+}
+
+.form-input:focus {
+    outline: 2px solid #ef4444; /* This is Tailwind's ring-red-500 */
+    outline-offset: 2px;
+}
+
+.form-button {
+    width: 100%;
+    padding: 0.5rem 0; /* This is Tailwind's py-2 */
+    background-color: #ef4444; /* This is Tailwind's bg-red-500 */
+    color: white;
+    border: none;
+    border-radius: 0.375rem; /* This is Tailwind's rounded-md */
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #dc2626; /* This is Tailwind's bg-red-600 */
+}
+
