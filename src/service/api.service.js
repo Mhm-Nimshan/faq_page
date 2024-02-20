@@ -45,6 +45,21 @@ const apiService = {
 			console.error('Login Error:', error);
 			return error;
 		}
+	},
+
+	endChat: async (chatId) => {
+		try {
+			const response = await axios.put(`http://localhost:3001/api/users/endchat/${chatId}`, { withCredentials: true });
+			console.log(response);
+			if (!response.data) {
+				throw new Error('Login failed');
+			}
+
+			return response.data;
+		} catch (error) {
+			console.error('Login Error:', error);
+			return error;
+		}
 	}
 
 }

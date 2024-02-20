@@ -16,7 +16,7 @@ const Chatbot = () => {
 	const [msg, setMsg] = useState("");
 	const [chat, setChat] = useChatState();
 	const [socket, setSocket] = useState(null);
-
+	const [isOnline, setIsOnline] = useState(true);
 
 	useEffect(() => {
 		if (chat.id) {
@@ -42,6 +42,10 @@ const Chatbot = () => {
 				setMessages(prevMessages => [...prevMessages, message]);
 			});
 
+			newSocket.on('receiveAgentOnline', (data) => {
+				setIsOnline(data.isAgentOnline);
+			});
+
 			setSocket(newSocket);
 
 			// Cleanup on component unmount
@@ -51,6 +55,29 @@ const Chatbot = () => {
 		}
 	}, [chat])
 
+	useEffect(() => {
+		const handleVisibilityChange = () => {
+			const currentPageIsActive = !document.hidden;
+			console.log('Page is now', currentPageIsActive ? 'focused' : 'unfocused');
+
+			// Since currentPageIsActive reflects the new state, the condition was updated accordingly
+			if (currentPageIsActive) {
+				console.log('Page is focused');
+				socket?.emit('isOnline', { "isOnline": true }); // Assuming you want to emit true when page is focused
+			} else {
+				console.log('Page is unfocused');
+				socket?.emit('isOnline', { "isOnline": false });
+			}
+		};
+
+		// Add event listener
+		document.addEventListener('visibilitychange', handleVisibilityChange);
+
+		// Remove event listener on cleanup
+		return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+	}, [socket]); // Added socket to the dependency array if its state might change over time
+
+
 	const startChat = () => {
 		setStarted(!started);
 	};
@@ -59,7 +86,8 @@ const Chatbot = () => {
 		let messageObj = {
 			message_text: msg,
 			from_customer: true,
-			chat_id: chat.id
+			chat_id: chat.id,
+			created_at: new Date()
 		}
 		socket.emit('sendMessage', messageObj);
 		setMsg("")
@@ -73,9 +101,14 @@ const Chatbot = () => {
 		}
 	}, [chat])
 
+	const endChat = (chatId) => {
+		apiService.endChat(chatId).then((res) => {
+
+		})
+	}
+
 	return (
 		<div className="chatbot-logo h-screen bg-gray-100 p-4">
-			{console.log(dept)}
 			{started && (
 				<div className="w-full chat-box max-w-md bg-white rounded-lg shadow-md">
 					<div className="p-4 border-b">
@@ -88,6 +121,15 @@ const Chatbot = () => {
 						<h3 className="text-lg font-bold">
 							Virtual Assistant
 						</h3>
+						<span
+							className={`text-sm ${isOnline
+								? "text-green-500"
+								: "text-gray-400"
+								}`}
+						>
+							{isOnline ? "Online" : "Offline"}
+						</span>
+						{chat?.id && <button className="border rounded-md p-2" onClick={() => endChat(chat?.id)}>End Chat</button>}
 					</div>
 
 					<div className="overflow-y-auto">
